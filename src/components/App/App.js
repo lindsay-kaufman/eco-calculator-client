@@ -8,7 +8,11 @@ import SignUp from '../SignUp/SignUp'
 import SignIn from '../SignIn/SignIn'
 import SignOut from '../SignOut/SignOut'
 import ChangePassword from '../ChangePassword/ChangePassword'
+
 import Garments from '../Garments/Garments'
+import Garment from '../Garments/Garment'
+import GarmentCreate from '../Garments/GarmentCreate'
+import GarmentEdit from '../Garments/GarmentEdit'
 
 class App extends Component {
   constructor () {
@@ -55,8 +59,17 @@ class App extends Component {
           <AuthenticatedRoute user={user} path='/change-password' render={() => (
             <ChangePassword msgAlert={this.msgAlert} user={user} />
           )} />
-          <AuthenticatedRoute user={user} path='/garments' render={() => (
+          <AuthenticatedRoute exact path='/garments' user={user} render={() => (
             <Garments component={Garments} user={user} />
+          )} />
+          <AuthenticatedRoute exact path='/garments/:id' user={user} render={(props) => (
+            <Garment component={Garment} user={user} />
+          )} />
+          <AuthenticatedRoute exact path ='/create-garment' user={user} render={(props) => (
+            <GarmentCreate component={GarmentCreate} user={user} />
+          )} />
+          <AuthenticatedRoute exact path='/garments/:id/edit' user={user} render={() => (
+            <GarmentEdit component={GarmentEdit} user={user} />
           )} />
         </main>
       </Fragment>
