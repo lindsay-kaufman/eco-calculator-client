@@ -25,18 +25,20 @@ const GarmentCreate = props => {
         Authorization: `Bearer ${props.user.token}`
       }
     })
-      .then(res => setGarmentId(res.data.garment.id))
-      .then(garmentId =>
+      .then(res => {
+        setGarmentId(res.data.garment.id)
+        console.log(res.data.garment)
         axios({
           url: `${apiUrl}/components`,
           method: 'POST',
           data: {
             component: {
-              garment_id: 24,
-              textile_id: 11
+              garment_id: res.data.garment.id,
+              textile_id: garment.textileOne
             }
           }
-        }))
+        })
+      })
       .catch(console.error)
   }
 

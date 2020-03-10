@@ -22,8 +22,13 @@ const Garments = props => {
       .catch(console.error)
   }, [])
 
-  if (!garments) {
-    return <h5>Create a new garment.</h5>
+  if (garments.length === 0) {
+    return (
+      <div>
+        <h6>Looks like you do not have any garments yet..</h6>
+        <Link to={'/create-garment'}>Create a new one here!</Link>
+      </div>
+    )
   }
 
   const garmentsHtml = garments.map(garment => (
