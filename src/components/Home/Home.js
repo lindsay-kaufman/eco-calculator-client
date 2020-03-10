@@ -6,14 +6,15 @@ const Home = (props) => {
   if (props.user) {
     return (
       <Layout>
-        <h4>Welcome to the Eco-Calculator!</h4>
+        <h4>Welcome!</h4>
         <Link to={'/garments'}>View Your Garments</Link>
       </Layout>
     )
   } else {
     return (
       <Layout>
-        <div>Welcome to the Eco-Calculator! Sign up or sign in to get started.</div>
+        <h4>Welcome to the Eco-Calculator!</h4><br />
+        <h6> Sign up or sign in to get started.</h6>
       </Layout>
     )
   }

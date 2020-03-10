@@ -37,7 +37,7 @@ const Garment = (props) => {
   }
 
   if (!garment) {
-    return <p>Create a new garment.</p>
+    return <h5>Loading....</h5>
   }
 
   if (deleted) {
@@ -48,9 +48,9 @@ const Garment = (props) => {
 
   return (
     <Layout>
-      <h4>{garment.description}</h4>
-      <p>Type: {garment.style}</p>
-      <p>Materials: {garment.components}</p>
+      <h5>Type: {garment.style}</h5>
+      <h5>Description: {garment.description}</h5>
+      <h5>Materials: {garment.components}</h5>
       <p>Green score: {garment.rating}</p>
       <Link to={`/garments/${props.match.params.id}/edit`}>
         <button>Update Garment</button><br />

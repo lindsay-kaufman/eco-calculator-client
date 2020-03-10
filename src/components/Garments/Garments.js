@@ -22,6 +22,10 @@ const Garments = props => {
       .catch(console.error)
   }, [])
 
+  if (!garments) {
+    return <h5>Create a new garment.</h5>
+  }
+
   const garmentsHtml = garments.map(garment => (
     <li key={garment.id}>
       <Link to={`/garments/${garment.id}`}>{garment.description}</Link>

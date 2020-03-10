@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
 
-const Textiles = (user, match) => {
+const Textiles = ({ user, match, handleChange, name }) => {
   const [textiles, setTextiles] = useState([])
   const [component, setComponent] = useState(null)
 
@@ -18,10 +18,12 @@ const Textiles = (user, match) => {
       .catch(console.error)
   }, [])
 
-  const handleChange = event => {
-    event.persist()
-    setComponent(component => ({ ...component, [event.target.name]: event.target.value }))
-  }
+  // const handleChange = event => {
+  //   console.log(event.target.value)
+  //   console.log(event.target)
+  //   event.persist()
+  //   setComponent(component => ({ ...component, [event.target.name]: event.target.value }))
+  // }
 
   const handleSubmit = (event) => {
     event.preventDefault()
@@ -42,9 +44,9 @@ const Textiles = (user, match) => {
     <div>
       <form onSubmit={handleSubmit}>
         <label>Select material
-          <select onChange={handleChange}>
+          <select name={name} onChange={handleChange}>
             {textiles && textiles.length > 0 && textiles.map(textile => {
-              return <option key={textile.name} value={textile.name}>{textile.name}</option>
+              return <option key={textile.name} value={textile.id}>{textile.name}</option>
             })}
           </select>
         </label>{' '}

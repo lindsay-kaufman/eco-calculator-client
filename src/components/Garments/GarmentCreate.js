@@ -6,10 +6,13 @@ import GarmentForm from './CreateGarmentForm'
 import Layout from '../shared/Layout'
 
 const GarmentCreate = props => {
-  const [garment, setGarment] = useState({ style: '', description: '', rating: '', components: [] })
+  const [garment, setGarment] = useState({ style: '', description: '', rating: '', textileOne: null })
   const [garmentId, setGarmentId] = useState(null)
 
   const handleChange = event => {
+    console.log(event.target.name)
+    console.log(event.target.value)
+    console.log(event.target)
     event.persist()
     setGarment(garment => ({ ...garment, [event.target.name]: event.target.value }))
   }
@@ -26,6 +29,7 @@ const GarmentCreate = props => {
       }
     })
       .then(res => setGarmentId(res.data.garment.id))
+      // .then() create each component
       .catch(console.error)
   }
 
@@ -39,6 +43,8 @@ const GarmentCreate = props => {
         garment={garment}
         handleChange={handleChange}
         handleSubmit={handleSubmit}
+        user={props.user}
+        match={props.match}
         cancelPath="/garments"
       />
     </Layout>
