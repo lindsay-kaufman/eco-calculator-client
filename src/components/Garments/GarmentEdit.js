@@ -6,7 +6,7 @@ import EditGarmentForm from './EditGarmentForm'
 import Layout from './../shared/Layout'
 
 const GarmentEdit = props => {
-  const [garment, setGarment] = useState({ style: '', description: '', materials: '' })
+  const [garment, setGarment] = useState({ style: '', description: '', textileOne: null })
   const [updated, setUpdated] = useState(false)
 
   useEffect(() => {
@@ -31,6 +31,18 @@ const GarmentEdit = props => {
         Authorization: `Bearer ${props.user.token}`
       }
     })
+      .then(() => {
+        axios({
+          url: `${apiUrl}/components`,
+          method: 'POST',
+          data: {
+            component: {
+              garment_id: `${props.match.params.id}`,
+              textile_id: garment.textileOne
+            }
+          }
+        })
+      })
       .then(() => setUpdated(true))
       .catch(console.error)
   }
@@ -45,6 +57,8 @@ const GarmentEdit = props => {
         garment={garment}
         handleChange={handleChange}
         handleSubmit={handleSubmit}
+        user={props.user}
+        match={props.match}
         cancelPath={`/garments/${props.match.params.id}`}
       />
     </Layout>

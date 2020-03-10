@@ -5,7 +5,7 @@ import Textiles from './../Textiles/Textiles'
 // Add 4 'materials' sections
 // The first will be required, the remaining will be optional
 
-const EditGarmentForm = ({ garment, handleSubmit, handleChange, cancelPath }) => (
+const EditGarmentForm = ({ garment, handleSubmit, handleChange, cancelPath, user, match }) => (
   <form onSubmit={handleSubmit}>
     <label>Type</label>
     <input
@@ -23,10 +23,16 @@ const EditGarmentForm = ({ garment, handleSubmit, handleChange, cancelPath }) =>
       onChange={handleChange}
     />
 
+    <Textiles
+      value ={garment.textileOne}
+      name="textileOne"
+      handleChange={handleChange}
+      user={user}
+      match={match}
+    />
+    {/* <Textiles />
     <Textiles />
-    <Textiles />
-    <Textiles />
-    <Textiles />
+    <Textiles /> */}
 
     <button type="submit">Update</button>
     <Link to={cancelPath}>
