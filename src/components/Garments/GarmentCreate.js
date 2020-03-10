@@ -6,7 +6,7 @@ import GarmentForm from './CreateGarmentForm'
 import Layout from '../shared/Layout'
 
 const GarmentCreate = props => {
-  const [garment, setGarment] = useState({ style: '', description: '', rating: '', textileOne: null })
+  const [garment, setGarment] = useState({ style: '', description: '', rating: '', textileOne: null, textileTwo: null, textileThree: null, textileFour: null })
   const [garmentId, setGarmentId] = useState(null)
 
   const handleChange = event => {
@@ -35,6 +35,48 @@ const GarmentCreate = props => {
             component: {
               garment_id: res.data.garment.id,
               textile_id: garment.textileOne
+            }
+          }
+        })
+      })
+      .then(res => {
+        setGarmentId(res.data.garment.id)
+        console.log(res.data.garment)
+        axios({
+          url: `${apiUrl}/components`,
+          method: 'POST',
+          data: {
+            component: {
+              garment_id: res.data.garment.id,
+              textile_id: garment.textileTwo
+            }
+          }
+        })
+      })
+      .then(res => {
+        setGarmentId(res.data.garment.id)
+        console.log(res.data.garment)
+        axios({
+          url: `${apiUrl}/components`,
+          method: 'POST',
+          data: {
+            component: {
+              garment_id: res.data.garment.id,
+              textile_id: garment.textileThree
+            }
+          }
+        })
+      })
+      .then(res => {
+        setGarmentId(res.data.garment.id)
+        console.log(res.data.garment)
+        axios({
+          url: `${apiUrl}/components`,
+          method: 'POST',
+          data: {
+            component: {
+              garment_id: res.data.garment.id,
+              textile_id: garment.textileFour
             }
           }
         })

@@ -30,21 +30,27 @@ const GarmentForm = ({ garment, handleSubmit, handleChange, cancelPath, user, ma
       user={user}
       match={match}
     />
-    {/* <Textiles
-      value ={garment.components.name}
-      name="components"
-      onChange={handleChange}
+    <Textiles
+      value ={garment.textileTwo}
+      name="textileTwo"
+      handleChange={handleChange}
+      user={user}
+      match={match}
     />
     <Textiles
-      value ={garment.components.name}
-      name="components"
-      onChange={handleChange}
+      value ={garment.textileThree}
+      name="textileThree"
+      handleChange={handleChange}
+      user={user}
+      match={match}
     />
     <Textiles
-      value ={garment.components.name}
-      name="components"
-      onChange={handleChange}
-    /> */}
+      value ={garment.textileFour}
+      name="textileFour"
+      handleChange={handleChange}
+      user={user}
+      match={match}
+    />
 
     <button type="submit">Create</button>
     <Link to={cancelPath}>

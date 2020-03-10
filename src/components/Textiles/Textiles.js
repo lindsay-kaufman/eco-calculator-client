@@ -38,6 +38,7 @@ const Textiles = ({ user, match, handleChange, name }) => {
       <form onSubmit={handleSubmit}>
         <label>Select material
           <select name={name} onChange={handleChange}>
+            <option value={''}>Select a material</option>
             {textiles && textiles.length > 0 && textiles.map(textile => {
               return <option key={textile.name} value={textile.id}>{textile.name}</option>
             })}
