@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import Textiles from './../Textiles/Textiles'
 
 // Add 4 'materials' sections
 // The first will be required, the remaining will be optional
@@ -21,6 +22,11 @@ const GarmentForm = ({ garment, handleSubmit, handleChange, cancelPath }) => (
       name="description"
       onChange={handleChange}
     />
+
+    <Textiles />
+    <Textiles />
+    <Textiles />
+    <Textiles />
 
     <button type="submit">Create</button>
     <Link to={cancelPath}>

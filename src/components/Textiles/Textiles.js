@@ -2,16 +2,17 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
 
-const Textiles = props => {
+const Textiles = (user, match) => {
   const [textiles, setTextiles] = useState([])
   const [component, setComponent] = useState(null)
+  console.log('user: ' + user)
 
   useEffect(() => {
     axios({
       url: `${apiUrl}/textiles`,
       method: 'GET',
       headers: {
-        Authorization: `Bearer ${props.user.token}`
+        Authorization: `Bearer ${user.token}`
       }
     })
       .then(res => setTextiles(res.data.textiles))
@@ -27,11 +28,11 @@ const Textiles = props => {
     event.preventDefault()
 
     axios({
-      url: `${apiUrl}/garments/${props.match.params.id}`,
+      url: `${apiUrl}/garments/${match.params.id}`,
       method: 'POST',
       data: { component },
       headers: {
-        Authorization: `Bearer ${props.user.token}`
+        Authorization: `Bearer ${user.token}`
       }
     })
       .then(res => setComponent(res.data.component.name))
