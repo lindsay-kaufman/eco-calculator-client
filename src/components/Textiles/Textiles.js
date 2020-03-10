@@ -18,13 +18,6 @@ const Textiles = ({ user, match, handleChange, name }) => {
       .catch(console.error)
   }, [])
 
-  // const handleChange = event => {
-  //   console.log(event.target.value)
-  //   console.log(event.target)
-  //   event.persist()
-  //   setComponent(component => ({ ...component, [event.target.name]: event.target.value }))
-  // }
-
   const handleSubmit = (event) => {
     event.preventDefault()
 

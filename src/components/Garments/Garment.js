@@ -46,11 +46,15 @@ const Garment = (props) => {
     } />
   }
 
+  const textilesHtml = garment.textiles.map(textile => (
+    <li key={textile.id}>{textile.name}</li>
+  ))
+
   return (
     <Layout>
       <h5>Type: {garment.style}</h5>
       <h5>Description: {garment.description}</h5>
-      <h5>Materials: {garment.components}</h5>
+      <h5>Materials: {textilesHtml}</h5>
       <p>Green score: {garment.rating}</p>
       <Link to={`/garments/${props.match.params.id}/edit`}>
         <button>Update Garment</button><br />

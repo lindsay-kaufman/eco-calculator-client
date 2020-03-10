@@ -10,9 +10,6 @@ const GarmentCreate = props => {
   const [garmentId, setGarmentId] = useState(null)
 
   const handleChange = event => {
-    console.log(event.target.name)
-    console.log(event.target.value)
-    console.log(event.target)
     event.persist()
     setGarment(garment => ({ ...garment, [event.target.name]: event.target.value }))
   }
@@ -29,7 +26,17 @@ const GarmentCreate = props => {
       }
     })
       .then(res => setGarmentId(res.data.garment.id))
-      // .then() create each component
+      .then(garmentId =>
+        axios({
+          url: `${apiUrl}/components`,
+          method: 'POST',
+          data: {
+            component: {
+              garment_id: 24,
+              textile_id: 11
+            }
+          }
+        }))
       .catch(console.error)
   }
 
