@@ -5,7 +5,7 @@ import Textiles from './../Textiles/Textiles'
 // Add 4 'materials' sections
 // The first will be required, the remaining will be optional
 
-const GarmentForm = ({ garment, handleSubmit, handleChange, cancelPath }) => (
+const EditGarmentForm = ({ garment, handleSubmit, handleChange, cancelPath }) => (
   <form onSubmit={handleSubmit}>
     <label>Type</label>
     <input
@@ -23,32 +23,16 @@ const GarmentForm = ({ garment, handleSubmit, handleChange, cancelPath }) => (
       onChange={handleChange}
     />
 
-    <Textiles
-      value ={garment.components.name}
-      name="components"
-      onChange={handleChange}
-    />
-    <Textiles
-      value ={garment.components.name}
-      name="components"
-      onChange={handleChange}
-    />
-    <Textiles
-      value ={garment.components.name}
-      name="components"
-      onChange={handleChange}
-    />
-    <Textiles
-      value ={garment.components.name}
-      name="components"
-      onChange={handleChange}
-    />
+    <Textiles />
+    <Textiles />
+    <Textiles />
+    <Textiles />
 
-    <button type="submit">Create</button>
+    <button type="submit">Update</button>
     <Link to={cancelPath}>
       <button>Cancel</button>
     </Link>
   </form>
 )
 
-export default GarmentForm
+export default EditGarmentForm

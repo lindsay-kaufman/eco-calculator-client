@@ -5,7 +5,6 @@ import apiUrl from '../../apiConfig'
 const Textiles = (user, match) => {
   const [textiles, setTextiles] = useState([])
   const [component, setComponent] = useState(null)
-  console.log('user: ' + user)
 
   useEffect(() => {
     axios({

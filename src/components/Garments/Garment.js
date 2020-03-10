@@ -4,13 +4,14 @@ import axios from 'axios'
 import apiUrl from '../../apiConfig'
 import Layout from './../shared/Layout'
 
-const Garment = (props, match) => {
+const Garment = (props) => {
   const [garment, setGarment] = useState(null)
   const [deleted, setDeleted] = useState(false)
 
   useEffect(() => {
+    console.log(props)
     axios({
-      url: `${apiUrl}/garments/${match.params.id}`,
+      url: `${apiUrl}/garments/${props.match.params.id}`,
       method: 'GET',
       headers: {
         Authorization: `Bearer ${props.user.token}`
@@ -25,8 +26,11 @@ const Garment = (props, match) => {
 
   const destroy = () => {
     axios({
-      url: `${apiUrl}/garments/${match.params.id}`,
-      method: 'DELETE'
+      url: `${apiUrl}/garments/${props.match.params.id}`,
+      method: 'DELETE',
+      headers: {
+        Authorization: `Bearer ${props.user.token}`
+      }
     })
       .then(() => setDeleted(true))
       .catch(console.error)
@@ -42,17 +46,17 @@ const Garment = (props, match) => {
     } />
   }
 
-  // how to I show materials here
   return (
     <Layout>
       <h4>{garment.description}</h4>
       <p>Type: {garment.style}</p>
+      <p>Materials: {garment.components}</p>
       <p>Green score: {garment.rating}</p>
-      <Link to={`/garments/${match.params.id}/edit`}>
-        <button>Update Materials</button>
+      <Link to={`/garments/${props.match.params.id}/edit`}>
+        <button>Update Garment</button><br />
       </Link>
+      <button onClick={destroy}>Remove Garment</button><br />
       <Link to="/garments">Back To Garments</Link>
-      <button onClick={destroy}>Remove Garment</button>
     </Layout>
   )
 }

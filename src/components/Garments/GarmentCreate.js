@@ -6,7 +6,7 @@ import GarmentForm from './CreateGarmentForm'
 import Layout from '../shared/Layout'
 
 const GarmentCreate = props => {
-  const [garment, setGarment] = useState({ style: '', description: '', rating: '' })
+  const [garment, setGarment] = useState({ style: '', description: '', rating: '', components: [] })
   const [garmentId, setGarmentId] = useState(null)
 
   const handleChange = event => {

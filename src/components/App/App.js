@@ -8,6 +8,7 @@ import SignUp from '../SignUp/SignUp'
 import SignIn from '../SignIn/SignIn'
 import SignOut from '../SignOut/SignOut'
 import ChangePassword from '../ChangePassword/ChangePassword'
+import Home from '../Home/Home'
 
 import Garments from '../Garments/Garments'
 import Garment from '../Garments/Garment'
@@ -52,6 +53,9 @@ class App extends Component {
           <Route path='/sign-up' render={() => (
             <SignUp msgAlert={this.msgAlert} setUser={this.setUser} />
           )} />
+          <Route path='/' render={() => (
+            <Home component={Home} user={user} />
+          )} />
           <Route path='/sign-in' render={() => (
             <SignIn msgAlert={this.msgAlert} setUser={this.setUser} />
           )} />
@@ -70,8 +74,8 @@ class App extends Component {
           <AuthenticatedRoute exact path ='/create-garment' user={user} render={(props) => (
             <GarmentCreate component={GarmentCreate} user={user} />
           )} />
-          <AuthenticatedRoute exact path='/garments/:id/edit' user={user} render={() => (
-            <GarmentEdit component={GarmentEdit} user={user} />
+          <AuthenticatedRoute exact path='/garments/:id/edit' user={user} render={({ match }) => (
+            <GarmentEdit component={GarmentEdit} user={user} match={match}/>
           )} />
           <AuthenticatedRoute exact path='/textiles' user={user} render={({ match }) => (
             <Textiles component={Textiles} user={user} match={match}/>

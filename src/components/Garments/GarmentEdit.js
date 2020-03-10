@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Redirect } from 'react-router-dom'
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
-import GarmentForm from './CreateGarmentForm'
+import EditGarmentForm from './EditGarmentForm'
 import Layout from './../shared/Layout'
 
 const GarmentEdit = props => {
@@ -26,7 +26,10 @@ const GarmentEdit = props => {
     axios({
       url: `${apiUrl}/garments/${props.match.params.id}`,
       method: 'PATCH',
-      data: { garment }
+      data: { garment },
+      headers: {
+        Authorization: `Bearer ${props.user.token}`
+      }
     })
       .then(() => setUpdated(true))
       .catch(console.error)
@@ -38,7 +41,7 @@ const GarmentEdit = props => {
 
   return (
     <Layout>
-      <GarmentForm
+      <EditGarmentForm
         garment={garment}
         handleChange={handleChange}
         handleSubmit={handleSubmit}
