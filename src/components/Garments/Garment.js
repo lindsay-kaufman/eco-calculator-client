@@ -4,19 +4,28 @@ import axios from 'axios'
 import apiUrl from '../../apiConfig'
 import Layout from './../shared/Layout'
 
-const Garment = props => {
+const Garment = (props, match) => {
   const [garment, setGarment] = useState(null)
   const [deleted, setDeleted] = useState(false)
 
   useEffect(() => {
-    axios(`${apiUrl}/garments/${props.match.params.id}`)
-      .then(res => setGarment(res.data.garment))
+    axios({
+      url: `${apiUrl}/garments/${match.params.id}`,
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${props.user.token}`
+      }
+    })
+      .then(res => {
+        setGarment(res.data.garment)
+        console.log(res.data.garment)
+      })
       .catch(console.error)
   }, [])
 
   const destroy = () => {
     axios({
-      url: `${apiUrl}/garments/${props.match.params.id}`,
+      url: `${apiUrl}/garments/${match.params.id}`,
       method: 'DELETE'
     })
       .then(() => setDeleted(true))
@@ -37,9 +46,9 @@ const Garment = props => {
   return (
     <Layout>
       <h4>{garment.description}</h4>
-      <p>Type: {garment.type}</p>
+      <p>Type: {garment.style}</p>
       <p>Green score: {garment.rating}</p>
-      <Link to={`/garments/${props.match.params.id}/edit`}>
+      <Link to={`/garments/${match.params.id}/edit`}>
         <button>Update Materials</button>
       </Link>
       <Link to="/garments">Back To Garments</Link>

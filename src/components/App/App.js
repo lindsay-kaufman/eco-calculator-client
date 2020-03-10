@@ -14,6 +14,8 @@ import Garment from '../Garments/Garment'
 import GarmentCreate from '../Garments/GarmentCreate'
 import GarmentEdit from '../Garments/GarmentEdit'
 
+import Textiles from '../Textiles/Textiles'
+
 class App extends Component {
   constructor () {
     super()
@@ -62,14 +64,17 @@ class App extends Component {
           <AuthenticatedRoute exact path='/garments' user={user} render={() => (
             <Garments component={Garments} user={user} />
           )} />
-          <AuthenticatedRoute exact path='/garments/:id' user={user} render={(props) => (
-            <Garment component={Garment} user={user} />
+          <AuthenticatedRoute exact path='/garments/:id' user={user} render={({ match }) => (
+            <Garment component={Garment} user={user} match={match}/>
           )} />
           <AuthenticatedRoute exact path ='/create-garment' user={user} render={(props) => (
             <GarmentCreate component={GarmentCreate} user={user} />
           )} />
           <AuthenticatedRoute exact path='/garments/:id/edit' user={user} render={() => (
             <GarmentEdit component={GarmentEdit} user={user} />
+          )} />
+          <AuthenticatedRoute exact path='/textiles' user={user} render={({ match }) => (
+            <Textiles component={Textiles} user={user} match={match}/>
           )} />
         </main>
       </Fragment>
