@@ -6,16 +6,20 @@ import EditGarmentForm from './EditGarmentForm'
 import Layout from './../shared/Layout'
 
 const GarmentEdit = props => {
-  const [garment, setGarment] = useState({ style: '', description: '' })
+  const [garment, setGarment] = useState({ style: '', description: '', textileOne: null, textileTwo: null, textileThree: null, textileFour: null })
   const [updated, setUpdated] = useState(false)
-  const [components, setComponents] = useState({ textileOne: null, textileTwo: null, textileThree: null, textileFour: null })
-  const [componentUpdated, setComponentUpdated] = useState(false)
 
   useEffect(() => {
-    axios(`${apiUrl}/garments/${props.match.params.id}`)
+    axios({
+      url: `${apiUrl}/garments/${props.match.params.id}`,
+      method: 'GET',
+      data: { garment },
+      headers: {
+        Authorization: `Bearer ${props.user.token}`
+      }
+    })
       .then(res => {
         setGarment(res.data.garment)
-        setComponents(res.data.garment.components)
       })
       .catch(console.error)
   }, [])
@@ -23,7 +27,6 @@ const GarmentEdit = props => {
   const handleChange = event => {
     event.persist()
     setGarment(garment => ({ ...garment, [event.target.name]: event.target.value }))
-    setComponents(components => ({ ...components, [event.target.name]: event.target.value }))
   }
 
   const handleSubmit = event => {
@@ -38,61 +41,50 @@ const GarmentEdit = props => {
       }
     })
       .then(() => {
-        axios({
-          url: `${apiUrl}/components/${components.id}`,
-          method: 'PATCH',
-          data: {
-            component: {
-              garment_id: `${props.match.params.id}`,
-              textile_id: garment.textileOne
-            }
+        const map = {
+          0: 'textileOne',
+          1: 'textileTwo',
+          2: 'textileThree',
+          3: 'textileFour'
+        }
+
+        const promises = []
+        for (let i = 0; i < 4; i++) {
+          if (garment.components[i] === undefined) {
+            promises.push(axios({
+              url: `${apiUrl}/components/`,
+              method: 'POST',
+              data: {
+                component: {
+                  garment_id: `${props.match.params.id}`,
+                  textile_id: garment[map[i]]
+                }
+              }
+            }))
+          } else {
+            promises.push(axios({
+              url: `${apiUrl}/components/${garment.components[i].id}`,
+              method: 'PATCH',
+              data: {
+                component: {
+                  garment_id: `${props.match.params.id}`,
+                  textile_id: garment[map[i]]
+                }
+              }
+            }))
           }
-        })
+        }
+
+        return Promise.all(promises)
       })
-      .then(() => {
-        axios({
-          url: `${apiUrl}/components`,
-          method: 'PATCH',
-          data: {
-            component: {
-              garment_id: `${props.match.params.id}`,
-              textile_id: garment.textileTwo
-            }
-          }
-        })
-      })
-      .then(() => {
-        axios({
-          url: `${apiUrl}/components`,
-          method: 'PATCH',
-          data: {
-            component: {
-              garment_id: `${props.match.params.id}`,
-              textile_id: garment.textileThree
-            }
-          }
-        })
-      })
-      .then(() => {
-        axios({
-          url: `${apiUrl}/components`,
-          method: 'PATCH',
-          data: {
-            component: {
-              garment_id: `${props.match.params.id}`,
-              textile_id: garment.textileFour
-            }
-          }
-        })
-      })
+
       .then(() => {
         setUpdated(true)
-        setComponentUpdated(true)
       })
       .catch(console.error)
   }
 
-  if (updated && componentUpdated) {
+  if (updated) {
     return <Redirect to={`/garments/${props.match.params.id}`} />
   }
 

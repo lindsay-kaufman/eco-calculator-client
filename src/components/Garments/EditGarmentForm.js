@@ -9,7 +9,6 @@ const EditGarmentForm = ({ garment, handleSubmit, handleChange, cancelPath, user
   <form onSubmit={handleSubmit}>
     <label>Type</label>
     <input
-      placeholder="Dress..."
       value={garment.style}
       name="style"
       onChange={handleChange}
@@ -17,7 +16,6 @@ const EditGarmentForm = ({ garment, handleSubmit, handleChange, cancelPath, user
 
     <label>Description</label>
     <input
-      placeholder="Black polkadot dress..."
       value={garment.description}
       name="description"
       onChange={handleChange}

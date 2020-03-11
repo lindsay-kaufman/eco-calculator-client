@@ -74,8 +74,8 @@ class App extends Component {
           <AuthenticatedRoute exact path ='/create-garment' user={user} render={(props) => (
             <GarmentCreate component={GarmentCreate} user={user} />
           )} />
-          <AuthenticatedRoute exact path='/garments/:id/edit' user={user} render={({ match, textileOne }) => (
-            <GarmentEdit component={GarmentEdit} user={user} match={match} textileOne={textileOne}/>
+          <AuthenticatedRoute exact path='/garments/:id/edit' user={user} render={({ match }) => (
+            <GarmentEdit component={GarmentEdit} user={user} match={match} />
           )} />
           <AuthenticatedRoute exact path='/textiles' user={user} render={({ match }) => (
             <Textiles component={Textiles} user={user} match={match}/>
