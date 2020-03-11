@@ -9,7 +9,6 @@ const Garment = (props) => {
   const [deleted, setDeleted] = useState(false)
 
   useEffect(() => {
-    console.log(props)
     axios({
       url: `${apiUrl}/garments/${props.match.params.id}`,
       method: 'GET',
@@ -19,7 +18,6 @@ const Garment = (props) => {
     })
       .then(res => {
         setGarment(res.data.garment)
-        console.log(res.data.garment)
       })
       .catch(console.error)
   }, [])

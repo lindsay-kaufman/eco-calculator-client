@@ -17,7 +17,6 @@ const Garments = props => {
     })
       .then(res => {
         setGarments(res.data.garments)
-        console.log(res.data.garments)
       })
       .catch(console.error)
   }, [])

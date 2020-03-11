@@ -27,7 +27,6 @@ const GarmentCreate = props => {
       }
     })
       .then(res => {
-        console.log('one')
         tempGarmentId = res.data.garment.id
         return axios({
           url: `${apiUrl}/components`,
@@ -41,7 +40,6 @@ const GarmentCreate = props => {
         })
       })
       .then(() => {
-        console.log('two')
         return axios({
           url: `${apiUrl}/components`,
           method: 'POST',
@@ -54,7 +52,6 @@ const GarmentCreate = props => {
         })
       })
       .then(() => {
-        console.log('three')
         return axios({
           url: `${apiUrl}/components`,
           method: 'POST',
@@ -67,7 +64,6 @@ const GarmentCreate = props => {
         })
       })
       .then(() => {
-        console.log('four')
         return axios({
           url: `${apiUrl}/components`,
           method: 'POST',
@@ -79,11 +75,8 @@ const GarmentCreate = props => {
           }
         })
       })
-      .catch(() => {
-        console.error('error')
-      })
+      .catch(console.error)
       .finally(() => {
-        console.log('finally')
         setGarmentId(tempGarmentId)
       })
   }
