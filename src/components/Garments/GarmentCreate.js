@@ -16,6 +16,7 @@ const GarmentCreate = props => {
 
   const handleSubmit = (event) => {
     event.preventDefault()
+    let tempGarmentId
 
     axios({
       url: `${apiUrl}/garments`,
@@ -26,62 +27,58 @@ const GarmentCreate = props => {
       }
     })
       .then(res => {
-        setGarmentId(res.data.garment.id)
-        console.log(res.data.garment)
+        tempGarmentId = res.data.garment.id
         axios({
           url: `${apiUrl}/components`,
           method: 'POST',
           data: {
             component: {
-              garment_id: res.data.garment.id,
+              garment_id: tempGarmentId,
               textile_id: garment.textileOne
             }
           }
         })
       })
-      .then(res => {
-        setGarmentId(res.data.garment.id)
-        console.log(res.data.garment)
+      .then(() => {
         axios({
           url: `${apiUrl}/components`,
           method: 'POST',
           data: {
             component: {
-              garment_id: res.data.garment.id,
+              garment_id: tempGarmentId,
               textile_id: garment.textileTwo
             }
           }
         })
       })
-      .then(res => {
-        setGarmentId(res.data.garment.id)
-        console.log(res.data.garment)
+      .then(() => {
         axios({
           url: `${apiUrl}/components`,
           method: 'POST',
           data: {
             component: {
-              garment_id: res.data.garment.id,
+              garment_id: tempGarmentId,
               textile_id: garment.textileThree
             }
           }
         })
       })
-      .then(res => {
-        setGarmentId(res.data.garment.id)
-        console.log(res.data.garment)
+      .then(() => {
         axios({
           url: `${apiUrl}/components`,
           method: 'POST',
           data: {
             component: {
-              garment_id: res.data.garment.id,
+              garment_id: tempGarmentId,
               textile_id: garment.textileFour
             }
           }
         })
       })
       .catch(console.error)
+      .finally(() => {
+        setGarmentId(tempGarmentId)
+      })
   }
 
   if (garmentId) {
