@@ -56,7 +56,7 @@ const Garment = (props) => {
       <h5>Description: {garment.description}</h5>
       <h5>Materials: {textilesHtml}</h5>
       <p>Green score: {garment.rating}</p>
-      <Link to={`/garments/${props.match.params.id}/edit`}>
+      <Link to={`/garments/${props.match.params.id}/edit`} textileOne={garment.textileOne}>
         <button>Update Garment</button><br />
       </Link>
       <button onClick={destroy}>Remove Garment</button><br />

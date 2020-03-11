@@ -30,9 +30,27 @@ const EditGarmentForm = ({ garment, handleSubmit, handleChange, cancelPath, user
       user={user}
       match={match}
     />
-    {/* <Textiles />
-    <Textiles />
-    <Textiles /> */}
+    <Textiles
+      value ={garment.textileTwo}
+      name="textileTwo"
+      handleChange={handleChange}
+      user={user}
+      match={match}
+    />
+    <Textiles
+      value ={garment.textileThree}
+      name="textileThree"
+      handleChange={handleChange}
+      user={user}
+      match={match}
+    />
+    <Textiles
+      value ={garment.textileFour}
+      name="textileFour"
+      handleChange={handleChange}
+      user={user}
+      match={match}
+    />
 
     <button type="submit">Update</button>
     <Link to={cancelPath}>
