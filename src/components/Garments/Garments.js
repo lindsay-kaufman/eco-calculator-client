@@ -26,7 +26,7 @@ const Garments = props => {
     return (
       <div>
         <h6>Looks like you do not have any garments yet..</h6>
-        <Link to={'/create-garment'}>Create a new one here!</Link>
+        <Link to={'/create-garment'}>Create a new one!</Link>
       </div>
     )
   }

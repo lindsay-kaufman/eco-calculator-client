@@ -78,7 +78,7 @@ const GarmentEdit = props => {
         return Promise.all(promises)
       })
 
-      .then(() => {
+      .finally(() => {
         setUpdated(true)
       })
       .catch(console.error)
