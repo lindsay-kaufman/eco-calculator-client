@@ -53,7 +53,7 @@ const Garment = (props) => {
       <h5>Type: {garment.style}</h5>
       <h5>Description: {garment.description}</h5>
       <h5>Materials: {textilesHtml}</h5>
-      <p>Green score: {garment.rating}</p>
+      <p>Green score: {garment.weighted}</p>
       <Link to={`/garments/${props.match.params.id}/edit`} textiles={garment.textiles}>
         <button>Update Garment</button><br />
       </Link>

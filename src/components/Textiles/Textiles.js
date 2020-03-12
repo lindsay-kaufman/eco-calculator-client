@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
 
-const Textiles = ({ user, match, handleChange, name }) => {
+const Textiles = ({ user, match, handleChange, name, value, garment }) => {
   const [textiles, setTextiles] = useState([])
   const [component, setComponent] = useState(null)
 
@@ -29,8 +29,11 @@ const Textiles = ({ user, match, handleChange, name }) => {
         Authorization: `Bearer ${user.token}`
       }
     })
-      .then(res => setComponent(res.data.component.name))
-      .catch(console.error)
+      .catch(console.error('error'))
+      .finally(res => {
+        setComponent(res.data.component.name)
+        console.log('Component set!' + res.data.component)
+      })
   }
 
   return (
@@ -38,7 +41,7 @@ const Textiles = ({ user, match, handleChange, name }) => {
       <form onSubmit={handleSubmit}>
         <label>Select material
           <select name={name} onChange={handleChange}>
-            <option value={''}>Select a material</option>
+            <option value={value}>Select a material</option>
             {textiles && textiles.length > 0 && textiles.map(textile => {
               return <option key={textile.name} value={textile.id}>{textile.name}</option>
             })}

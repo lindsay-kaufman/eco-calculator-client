@@ -2,9 +2,6 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import Textiles from './../Textiles/Textiles'
 
-// Add 4 'materials' sections
-// The first will be required, the remaining will be optional
-
 const GarmentForm = ({ garment, handleSubmit, handleChange, cancelPath, user, match }) => (
   <form onSubmit={handleSubmit}>
     <label>Type</label>
@@ -30,10 +27,26 @@ const GarmentForm = ({ garment, handleSubmit, handleChange, cancelPath, user, ma
       user={user}
       match={match}
     />
+    <label>Percent</label>
+    <input
+      value={garment.textileOnePercent}
+      name="textileOnePercent"
+      onChange={handleChange}
+      user={user}
+      match={match}
+    />
     <Textiles
       value ={garment.textileTwo}
       name="textileTwo"
       handleChange={handleChange}
+      user={user}
+      match={match}
+    />
+    <label>Percent</label>
+    <input
+      value={garment.textileTwoPercent}
+      name="textileTwoPercent"
+      onChange={handleChange}
       user={user}
       match={match}
     />
@@ -44,10 +57,26 @@ const GarmentForm = ({ garment, handleSubmit, handleChange, cancelPath, user, ma
       user={user}
       match={match}
     />
+    <label>Percent</label>
+    <input
+      value={garment.textileThreePercent}
+      name="textileThreePercent"
+      onChange={handleChange}
+      user={user}
+      match={match}
+    />
     <Textiles
       value ={garment.textileFour}
       name="textileFour"
       handleChange={handleChange}
+      user={user}
+      match={match}
+    />
+    <label>Percent</label>
+    <input
+      value={garment.textileFourPercent}
+      name="textileFourPercent"
+      onChange={handleChange}
       user={user}
       match={match}
     />

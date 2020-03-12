@@ -27,6 +27,7 @@ const EditGarmentForm = ({ garment, handleSubmit, handleChange, cancelPath, user
       handleChange={handleChange}
       user={user}
       match={match}
+      garment={garment}
     />
     <Textiles
       value ={garment.textileTwo}
@@ -34,6 +35,7 @@ const EditGarmentForm = ({ garment, handleSubmit, handleChange, cancelPath, user
       handleChange={handleChange}
       user={user}
       match={match}
+      garment={garment}
     />
     <Textiles
       value ={garment.textileThree}
@@ -41,6 +43,7 @@ const EditGarmentForm = ({ garment, handleSubmit, handleChange, cancelPath, user
       handleChange={handleChange}
       user={user}
       match={match}
+      garment={garment}
     />
     <Textiles
       value ={garment.textileFour}
@@ -48,6 +51,7 @@ const EditGarmentForm = ({ garment, handleSubmit, handleChange, cancelPath, user
       handleChange={handleChange}
       user={user}
       match={match}
+      garment={garment}
     />
 
     <button type="submit">Update</button>

@@ -6,7 +6,7 @@ import GarmentForm from './CreateGarmentForm'
 import Layout from '../shared/Layout'
 
 const GarmentCreate = props => {
-  const [garment, setGarment] = useState({ style: '', description: '', rating: '', textileOne: null, textileTwo: null, textileThree: null, textileFour: null })
+  const [garment, setGarment] = useState({ style: '', description: '', rating: '', textileOne: null, textileTwo: null, textileThree: null, textileFour: null, textileOnePercent: null, textileTwoPercent: null, textileThreePercent: null, textileFourPercent: null })
   const [garmentId, setGarmentId] = useState(null)
 
   const handleChange = event => {
@@ -34,7 +34,8 @@ const GarmentCreate = props => {
           data: {
             component: {
               garment_id: tempGarmentId,
-              textile_id: garment.textileOne
+              textile_id: garment.textileOne,
+              percent: garment.textileOnePercent
             }
           }
         })
@@ -46,7 +47,8 @@ const GarmentCreate = props => {
           data: {
             component: {
               garment_id: tempGarmentId,
-              textile_id: garment.textileTwo
+              textile_id: garment.textileTwo,
+              percent: garment.textileTwoPercent
             }
           }
         })
@@ -58,7 +60,8 @@ const GarmentCreate = props => {
           data: {
             component: {
               garment_id: tempGarmentId,
-              textile_id: garment.textileThree
+              textile_id: garment.textileThree,
+              percent: garment.textileThreePercent
             }
           }
         })
@@ -70,7 +73,8 @@ const GarmentCreate = props => {
           data: {
             component: {
               garment_id: tempGarmentId,
-              textile_id: garment.textileFour
+              textile_id: garment.textileFour,
+              percent: garment.textileFourPercent
             }
           }
         })
