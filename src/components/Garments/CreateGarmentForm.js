@@ -34,6 +34,7 @@ const GarmentForm = ({ garment, handleSubmit, handleChange, cancelPath, user, ma
                 handleChange={handleChange}
                 user={user}
                 match={match}
+                className="dropdown"
               />
               <label>Percent</label>
               <input
@@ -53,6 +54,7 @@ const GarmentForm = ({ garment, handleSubmit, handleChange, cancelPath, user, ma
               handleChange={handleChange}
               user={user}
               match={match}
+              className="dropdown"
             />
             <label>Percent</label>
             <input
@@ -71,6 +73,7 @@ const GarmentForm = ({ garment, handleSubmit, handleChange, cancelPath, user, ma
               handleChange={handleChange}
               user={user}
               match={match}
+              className="dropdown"
             />
             <label>Percent</label>
             <input
@@ -89,6 +92,7 @@ const GarmentForm = ({ garment, handleSubmit, handleChange, cancelPath, user, ma
               handleChange={handleChange}
               user={user}
               match={match}
+              className="dropdown"
             />
             <label>Percent</label>
             <input
@@ -100,7 +104,7 @@ const GarmentForm = ({ garment, handleSubmit, handleChange, cancelPath, user, ma
               match={match}
             />
           </fieldset>
-          <button type="submit">Create</button>
+          <button type="submit" btn-sm>Create</button>
           <Link to={cancelPath}>
             <button>Cancel</button>
           </Link>

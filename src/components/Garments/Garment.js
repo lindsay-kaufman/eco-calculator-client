@@ -50,15 +50,23 @@ const Garment = (props) => {
 
   return (
     <Layout>
-      <h5>Type: {garment.style}</h5>
-      <h5>Description: {garment.description}</h5>
-      <h5>Materials: {textilesHtml}</h5>
-      <p>Green score: {garment.weighted}</p>
-      <Link to={`/garments/${props.match.params.id}/edit`} textiles={garment.textiles}>
-        <button>Update Garment</button><br />
-      </Link>
-      <button onClick={destroy}>Remove Garment</button><br />
-      <Link to="/garments">Back To Garments</Link>
+      <div className="garment-body">
+        <div className="body-heading">
+          <h1>Green score: {garment.weighted}</h1>
+          <Link to="/garments" class="redirect-link">Back To Garments</Link>
+        </div>
+        <div className="my-garment">
+          <h4>{garment.description}</h4>
+          <h4><span className="materials-title">Materials</span><br /> {textilesHtml}</h4>
+
+          <div className="edit-form-buttons">
+            <Link to={`/garments/${props.match.params.id}/edit`} textiles={garment.textiles}>
+              <button>Update</button><br />
+            </Link>
+            <button onClick={destroy}>Remove</button><br />
+          </div>
+        </div>
+      </div>
     </Layout>
   )
 }

@@ -38,9 +38,13 @@ const Garments = props => {
 
   return (
     <Layout>
-      <h4>Garments</h4>
-      <Link to={'/create-garment'}>Create A Garment</Link>
-      <ul>{garmentsHtml}</ul>
+      <div className="garment-body">
+        <div className="body-heading">
+          <h1>Garments</h1>
+          <Link to={'/create-garment'} className="create-garment-title">Create A Garment</Link>
+        </div>
+        <ul>{garmentsHtml}</ul><br />
+      </div>
     </Layout>
   )
 }

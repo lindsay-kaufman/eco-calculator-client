@@ -11,7 +11,7 @@ const EditGarmentForm = ({ garment, handleSubmit, handleChange, cancelPath, user
       <div className="card-block">
         <form className="k-form" onSubmit={handleSubmit}>
           <fieldset>
-            <legend>Create A Garment</legend>
+            <legend>Edit Your Garment</legend>
             <label className="k-form-field">
               <span>Garment Type</span>
               <input
@@ -107,7 +107,7 @@ const EditGarmentForm = ({ garment, handleSubmit, handleChange, cancelPath, user
               match={match}
             />
           </fieldset>
-          <button type="submit">Create</button>
+          <button type="submit">Update</button>
           <Link to={cancelPath}>
             <button>Cancel</button>
           </Link>

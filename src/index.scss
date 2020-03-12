@@ -1,14 +1,95 @@
 @import '~bootstrap/scss/bootstrap';
 
+body {
+  background-image: url("./styling/project-background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+  color: white;
+
+  h2 {
+    text-align: center;
+  }
+}
+
+a {
+  color: white;
+}
+
 button {
   margin: 8px;
+  font-size: 15px;
+}
+
+.body-heading {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
 }
 
 .container {
-  margin: 40px;
+  margin-top: 40px;
+}
+
+.create-garment-title, .view-garments-title, .redirect-link {
+  font-size: 25px;
+  padding-right: 10px;
+  text-decoration-line: underline;
+}
+
+.dropdown {
+  padding: 10px;
+}
+
+.edit-form-buttons {
+  position: relative;
+  display: flex;
+  padding: 20px;
+}
+
+.fashion-facts {
+  padding-top: 40px;
+  text-align: center;
+  font-size: 25px;
+}
+
+.footer {
+  position: absolute;
+  bottom: 5px;
+}
+
+.card {
+  background-color: rgba(8, 168, 101, 0.8);
+  border-radius: 20px;
+  color: white;
+  padding: 15px;
+}
+
+.garment-body {
+  background-color: rgba(8, 168, 101, 0.8);
+  font-size: 25px;
+  height: 400px;
+  padding: 15px;
+}
+
+.materials-title {
+  text-decoration-line: underline;
+}
+
+li {
+  font-size: 20px;
+}
+
+nav {
+  background-color: rgb(8, 168, 101);
 }
 
 .percents {
   width: 30px;
   margin: 10px;
+}
+
+.title {
+  text-align: center;
 }
