@@ -24,8 +24,8 @@ const Garments = props => {
   if (garments.length === 0) {
     return (
       <div>
-        <h6>Looks like you do not have any garments yet..</h6>
-        <Link to={'/create-garment'}>Create a new one!</Link>
+        <h4>Looks like you do not have any garments yet..</h4>
+        <Link to={'/create-garment'} className="create-garment-title">Click here to get started!</Link>
       </div>
     )
   }
