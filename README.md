@@ -9,7 +9,7 @@ A user is given an impact score for each garment they create. This score is a we
 
 - [API Repo](https://github.com/lindsay-kaufman/eco-calculator-api)
 - [Deployed API](https://ecocalculator.herokuapp.com/)
-- [Deployed Client](https://ecocalculator.herokuapp.com/)
+- [Deployed Client](https://lindsay-kaufman.github.io/eco-calculator-client/#/)
 
 ## Planning Story
 In planning, I first had to find the proper data that I needed to find an impact score. I decided upon the Sustainable Apparal Coalition Material Index, as it is a tool used industry wide in fashion. 
