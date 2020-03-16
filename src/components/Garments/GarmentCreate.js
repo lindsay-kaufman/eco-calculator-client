@@ -37,6 +37,9 @@ const GarmentCreate = props => {
               textile_id: garment.textileOne,
               percent: garment.textileOnePercent
             }
+          },
+          headers: {
+            Authorization: `Bearer ${props.user.token}`
           }
         })
       })
@@ -50,6 +53,9 @@ const GarmentCreate = props => {
               textile_id: garment.textileTwo,
               percent: garment.textileTwoPercent
             }
+          },
+          headers: {
+            Authorization: `Bearer ${props.user.token}`
           }
         })
       })
@@ -63,6 +69,9 @@ const GarmentCreate = props => {
               textile_id: garment.textileThree,
               percent: garment.textileThreePercent
             }
+          },
+          headers: {
+            Authorization: `Bearer ${props.user.token}`
           }
         })
       })
@@ -76,6 +85,9 @@ const GarmentCreate = props => {
               textile_id: garment.textileFour,
               percent: garment.textileFourPercent
             }
+          },
+          headers: {
+            Authorization: `Bearer ${props.user.token}`
           }
         })
       })
