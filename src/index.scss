@@ -33,7 +33,7 @@ button {
 }
 
 .create-garment-title, .view-garments-title, .redirect-link {
-  font-size: 25px;
+  font-size: 20px;
   padding-right: 10px;
   text-decoration-line: underline;
 }
@@ -74,7 +74,12 @@ button {
   background-color: rgba(8, 168, 101, 0.8);
   font-size: 25px;
   height: 400px;
+  overflow: scroll;
   padding: 15px;
+
+  p {
+    font-size: 20px;
+  }
 }
 
 .materials-title {

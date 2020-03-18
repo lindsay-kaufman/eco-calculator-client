@@ -17,6 +17,8 @@ import GarmentEdit from '../Garments/GarmentEdit'
 
 import Textiles from '../Textiles/Textiles'
 
+import GreenScore from '../Garments/GreenScore'
+
 class App extends Component {
   constructor () {
     super()
@@ -79,6 +81,9 @@ class App extends Component {
           )} />
           <AuthenticatedRoute exact path='/textiles' user={user} render={({ match }) => (
             <Textiles component={Textiles} user={user} match={match}/>
+          )} />
+          <AuthenticatedRoute exact path='/green-score' user={user} render={() => (
+            <GreenScore component={GreenScore} user={user} />
           )} />
         </main>
       </Fragment>

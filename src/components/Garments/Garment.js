@@ -65,6 +65,7 @@ const Garment = (props) => {
             </Link>
             <button onClick={destroy}>Remove</button><br />
           </div>
+          <Link to={'/green-score'} class="redirect-link">What is my green score?</Link>
         </div>
       </div>
     </Layout>
